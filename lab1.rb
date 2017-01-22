@@ -10,8 +10,8 @@ def Parse(obj)
 		$counter += 1
 		$URLs.push(obj)
 		
-		regExpE = /mailto:([\w.-]+@[\w.-]+\.\w+)/
-		regExpU = Regexp.new('<a href=[\'\"](' + $site + '[\w./]+)')
+		regExpE = /mailto:([[[:word:]].-]+@[[[:word:]].-]+\.[[:word:]]+)/
+		regExpU = Regexp.new('<a href=[\'\"](' + $site + '[[[:word:]]./]+)')
 		url = URI.parse(obj)
 		req = Net::HTTP::Get.new(url.to_s)
 		res = Net::HTTP.start(url.host, url.port) {|http|
